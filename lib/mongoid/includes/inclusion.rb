@@ -7,9 +7,9 @@ module Mongoid
       alias_method :metadata, :__getobj__
       attr_reader :from
 
-      def initialize(metadata, from: nil, loader: nil)
+      def initialize(metadata, from: nil, loader: nil, **options)
         super(metadata)
-        @from, @loader = from, loader
+        @from, @loader, @options = from, loader, options
       end
 
       # Public: Returns true if the relation is not direct.

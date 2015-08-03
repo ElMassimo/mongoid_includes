@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'mongoid_includes'
-  s.version = '0.0.1'
+  s.version = '1.0.0'
   s.licenses = ['MIT']
   s.summary = 'Improved eager loading support for Mongoid.'
   s.description = 'Mongoid::Includes improves eager loading in Mongoid, supporting polymorphic associations, and up to two-levels of eager loading.'
