@@ -1,12 +1,13 @@
 require 'spec_helper'
+require './spec/support/models/album'
 
 describe Mongoid::Includes::Errors::InvalidIncludes do
 
   describe "#message" do
 
-    let(:error) do
-      described_class.new(:ratable)
-    end
+    Given(:error) {
+      described_class.new(Album, :musicians, from: :artist)
+    }
 
     it "contains the problem in the message" do
       expect(error.message).to include(

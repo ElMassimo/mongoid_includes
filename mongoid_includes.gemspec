@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'mongoid_includes'
-  s.version = '1.0.0'
+  s.version = '0.0.1'
   s.licenses = ['MIT']
   s.summary = 'Improved eager loading support for Mongoid.'
   s.description = 'Mongoid::Includes improves eager loading in Mongoid, supporting polymorphic associations, and up to two-levels of eager loading.'
@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.rdoc_options = ['--charset=UTF-8']
 
   s.require_path = 'lib'
-  s.files        = Dir.glob('lib/**/*') + %w(CHANGELOG.md LICENSE README.md Rakefile)
+  s.files        = Dir.glob('lib/**/*') + %w(CHANGELOG.md LICENSE.txt README.md Rakefile)
   s.test_files   = Dir.glob('spec/**/*')
 
   s.add_development_dependency 'pry'

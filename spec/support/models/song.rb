@@ -1,5 +1,3 @@
-require './spec/support/models/model'
-
 class Song
   include Mongoid::Document
 

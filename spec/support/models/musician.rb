@@ -1,5 +1,3 @@
-require './spec/support/models/model'
-
 class Person
   include Mongoid::Document
 
