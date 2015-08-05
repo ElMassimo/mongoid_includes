@@ -9,7 +9,7 @@ module Mongoid
         return false unless eager_loadable?
 
         nested_inclusions, inclusions = criteria.inclusions.partition(&:nested?)
-        polymorphic_inclusions, inclusions = inclusions.partition(&:polymorphic?)
+        polymorphic_inclusions, inclusions = inclusions.partition(&:polymorphic_belongs_to?)
         full_preload(docs, inclusions, polymorphic_inclusions, nested_inclusions)
 
         self.eager_loaded = true

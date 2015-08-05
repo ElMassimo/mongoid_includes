@@ -1,8 +1,4 @@
-class Person
-  include Mongoid::Document
-
-  field :name, type: String
-end
+require './spec/support/models/person'
 
 class Musician < Person
 

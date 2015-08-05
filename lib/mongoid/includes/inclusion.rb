@@ -4,12 +4,12 @@ module Mongoid
     # Public: Represents a relation that needs to be eager loaded.
     class Inclusion < SimpleDelegator
 
+      # Public: Convenience getter for the wrapped metadata.
       alias_method :metadata, :__getobj__
-      attr_reader :from
 
-      def initialize(metadata, from: nil, loader: nil, **options)
+      def initialize(metadata, options = {})
         super(metadata)
-        @from, @loader, @options = from, loader, options
+        @options = options
       end
 
       # Public: Returns true if the relation is not direct.
@@ -17,13 +17,34 @@ module Mongoid
         !!from
       end
 
+      # Public: Returns true if the relation is a polymorphic belongs_to.
+      def polymorphic_belongs_to?
+        metadata.polymorphic? && metadata.relation == Mongoid::Relations::Referenced::In
+      end
+
+      # Public: Name of the relation from which a nested inclusion is performed.
+      def from
+        @from ||= @options[:from]
+      end
+
+      # Internal: Proc that will return the included documents from a set of foreign keys.
+      def loader
+        @loader ||= @options[:loader]
+      end
+
+      # Internal: Proc that will modify the documents to include in the relation.
+      def modifier
+        @modifier ||= @options[:with]
+      end
+
       # Public: Preloads the documents for the relation. Users a custom block
       # if one was provided, or fetches them using the class and the foreign key.
       def load_documents_for(foreign_key, foreign_key_values)
-        if @loader
-          @loader.call(foreign_key_values)
+        if loader
+          loader.call(foreign_key, foreign_key_values)
         else
-          klass.any_in(foreign_key => foreign_key_values)
+          docs = klass.any_in(foreign_key => foreign_key_values)
+          modifier ? modifier.call(docs) : docs
         end
       end
 

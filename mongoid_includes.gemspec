@@ -1,6 +1,11 @@
+lib = File.expand_path('../lib/', __FILE__)
+$:.unshift lib unless $:.include?(lib)
+
+require 'mongoid/includes/version'
+
 Gem::Specification.new do |s|
   s.name = 'mongoid_includes'
-  s.version = '1.0.0'
+  s.version = Mongoid::Includes::VERSION
   s.licenses = ['MIT']
   s.summary = 'Improved eager loading support for Mongoid.'
   s.description = 'Mongoid::Includes improves eager loading in Mongoid, supporting polymorphic associations, and up to two-levels of eager loading.'
@@ -17,9 +22,9 @@ Gem::Specification.new do |s|
   s.files        = Dir.glob('lib/**/*') + %w(CHANGELOG.md LICENSE.txt README.md Rakefile)
   s.test_files   = Dir.glob('spec/**/*')
 
-  s.add_development_dependency 'pry'
-  s.add_development_dependency 'rake'
-  s.add_development_dependency 'rspec-given'
+  s.add_development_dependency 'pry', '~> 0.10'
+  s.add_development_dependency 'rake', '~> 10.3'
+  s.add_development_dependency 'rspec-given', '~> 3.5'
 
   s.add_runtime_dependency 'mongoid', ['>= 3.1.0', '< 5.0.0']
 end

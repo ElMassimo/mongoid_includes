@@ -13,6 +13,8 @@ Mongoid::Includes
 
 ```ruby
 Album.includes(:songs).includes(:musicians, from: :band)
+
+Band.includes(:albums, with: ->(albums) { albums.gt(release: 1970) })
 ```
 
 ## Advantages

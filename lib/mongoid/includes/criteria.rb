@@ -38,7 +38,7 @@ module Mongoid
       def includes(*relations, **options)
         if options[:from]
           from_metadata = add_inclusion(klass, options[:from])
-          if from_metadata.polymorphic? && !options[:from_class]
+          if from_metadata.polymorphic_belongs_to? && !options[:from_class]
             raise Mongoid::Includes::Errors::InvalidPolymorphicIncludes.new(klass, relations, options)
           end
         end
@@ -54,11 +54,13 @@ module Mongoid
     private
 
       # Internal: Adds a new inclusion to the criteria.
+      #
+      # Returns the Mongoid::Includes::Inclusion for the included relation.
       def add_inclusion(owner_class, relation, options = {})
-        owner_class.reflect_on_association(relation).tap do |metadata|
-          raise Mongoid::Includes::Errors::InvalidIncludes.new(owner_class, relation, options) unless metadata
-          inclusions.push(metadata, options) unless inclusions.include?(metadata)
+        unless metadata = owner_class.reflect_on_association(relation)
+          raise Mongoid::Includes::Errors::InvalidIncludes.new(owner_class, relation, options)
         end
+        inclusions.include?(metadata) || inclusions.push(metadata, options)
       end
     end
   end
