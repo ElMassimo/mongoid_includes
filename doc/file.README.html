@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>
+  File: README
+  
+    &mdash; Documentation by YARD 0.8.7.6
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!file.README.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><div id='filecontents'>
+<h1 id="label-Mongoid%3A%3AIncludes">Mongoid::Includes</h1>
+
+<p><a href="http://badge.fury.io/rb/mongoid_includes"><img
+src="https://badge.fury.io/rb/mongoid_includes.svg"></a> <a
+href="https://travis-ci.org/ElMassimo/mongoid_includes"><img
+src="https://travis-ci.org/ElMassimo/mongoid_includes.svg"></a> <a
+href="https://codeclimate.com/github/ElMassimo/mongoid_includes"><img
+src="https://codeclimate.com/github/ElMassimo/mongoid_includes/badges/coverage.svg"></a>
+<a href="https://codeclimate.com/github/ElMassimo/mongoid_includes"><img
+src="https://codeclimate.com/github/ElMassimo/mongoid_includes.png"></a> <a
+href="http://inch-ci.org/github/ElMassimo/mongoid_includes"><img
+src="http://inch-ci.org/github/ElMassimo/mongoid_includes.svg"></a> <a
+href="https://github.com/ElMassimo/mongoid_includes/blob/master/LICENSE.txt"><img
+src="https://img.shields.io/badge/license-MIT-blue.svg"></a></p>
+
+<p><code>Mongoid::Includes</code> improves eager loading in Mongoid,
+supporting polymorphic associations, and up to two-levels of eager loading.</p>
+
+<h3 id="label-Usage">Usage</h3>
+
+<pre class="code ruby"><code class="ruby"><span class='const'>Album</span><span class='period'>.</span><span class='id identifier rubyid_includes'>includes</span><span class='lparen'>(</span><span class='symbol'>:songs</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_includes'>includes</span><span class='lparen'>(</span><span class='symbol'>:musicians</span><span class='comma'>,</span> <span class='label'>from:</span> <span class='symbol'>:band</span><span class='rparen'>)</span>
+
+<span class='const'>Band</span><span class='period'>.</span><span class='id identifier rubyid_includes'>includes</span><span class='lparen'>(</span><span class='symbol'>:albums</span><span class='comma'>,</span> <span class='label'>with:</span> <span class='tlambda'>-&gt;</span><span class='lparen'>(</span><span class='id identifier rubyid_albums'>albums</span><span class='rparen'>)</span> <span class='tlambeg'>{</span> <span class='id identifier rubyid_albums'>albums</span><span class='period'>.</span><span class='id identifier rubyid_gt'>gt</span><span class='lparen'>(</span><span class='label'>release:</span> <span class='int'>1970</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='rparen'>)</span>
+</code></pre>
+
+<h2 id="label-Advantages">Advantages</h2>
+<ul><li>
+<p>Avoid N+1 queries and get better performance.</p>
+</li><li>
+<p>No boilerplate code is required.</p>
+</li><li>
+<p>Can avoid loading all the related documents if necessary.</p>
+</li></ul>
+
+<h2 id="label-License">License</h2>
+
+<pre class="code ruby"><code class="ruby">Copyright (c) 2015 Máximo Mussini
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+&quot;Software&quot;), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</code></pre>
+</div></div>
+
+    <div id="footer">
+  Generated on Wed Aug  5 14:53:01 2015 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.6 (ruby-2.1.5).
+</div>
+
+  </body>
+</html>
