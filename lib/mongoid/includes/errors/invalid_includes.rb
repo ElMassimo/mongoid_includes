@@ -18,6 +18,7 @@ module Mongoid
           :invalid_includes
         end
 
+        # Overrides: Helps to keep the templates simple by using inspect on the options.
         def compose_message(type, options)
           super type, options.transform_values { |value|
             value.is_a?(Array) ? value.map(&:inspect).join(', ') : value.inspect

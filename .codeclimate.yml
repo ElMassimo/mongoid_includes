@@ -1,0 +1,8 @@
+languages:
+  Ruby: true
+
+# You can globally exclude files from being analyzed by any engine using the
+# exclude_paths key.
+
+exclude_paths:
+- doc/**/*
