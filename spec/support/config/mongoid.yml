@@ -1,0 +1,39 @@
+test:
+  sessions:
+    default:
+      database: mongoid_test
+      hosts:
+        - <%=ENV["MONGOID_SPEC_HOST"]%>:<%=ENV["MONGOID_SPEC_PORT"]%>
+      options:
+        read: primary
+    mongohq_single:
+      database: <%=ENV["MONGOHQ_SINGLE_NAME"]%>
+      username: <%=ENV["MONGOHQ_SINGLE_USER"]%>
+      password: <%=ENV["MONGOHQ_SINGLE_PASS"]%>
+      hosts:
+        - <%=ENV["MONGOHQ_SINGLE_URL"]%>
+      options:
+        write:
+          w: 1
+        read: primary
+    mongohq_repl:
+      database: <%=ENV["MONGOHQ_REPL_NAME"]%>
+      username: <%=ENV["MONGOHQ_REPL_USER"]%>
+      password: <%=ENV["MONGOHQ_REPL_PASS"]%>
+      hosts:
+        - <%=ENV["MONGOHQ_REPL_1_URL"]%>
+        - <%=ENV["MONGOHQ_REPL_2_URL"]%>
+      options:
+        read: primary
+        write:
+          w: majority
+    mongohq_repl_uri:
+      uri: <%= ENV["MONGOHQ_REPL_URI"]%>
+  options:
+    include_root_in_json: false
+    include_type_for_serialization: false
+    preload_models: false
+    scope_overwrite_exception: false
+    raise_not_found_error: true
+    use_activesupport_time_zone: true
+    use_utc: false

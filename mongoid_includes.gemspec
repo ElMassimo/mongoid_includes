@@ -22,9 +22,5 @@ Gem::Specification.new do |s|
   s.files        = Dir.glob('lib/**/*') + %w(CHANGELOG.md LICENSE.txt README.md Rakefile)
   s.test_files   = Dir.glob('spec/**/*')
 
-  s.add_development_dependency 'pry', '~> 0.10'
-  s.add_development_dependency 'rake', '~> 10.3'
-  s.add_development_dependency 'rspec-given', '~> 3.5'
-
   s.add_runtime_dependency 'mongoid', ['>= 3.1.0', '< 5.0.0']
 end

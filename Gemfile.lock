@@ -85,8 +85,8 @@ DEPENDENCIES
   bundler
   codeclimate-test-reporter
   mongoid_includes!
-  pry (~> 0.10)
-  rake (~> 10.3)
+  pry
+  rake
   rspec-given (~> 3.5)
   yard
   yard-tomdoc
