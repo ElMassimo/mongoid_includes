@@ -2,7 +2,7 @@ en:
   mongoid:
     errors:
       messages:
-        invalid_include:
+        invalid_includes:
           message: "Invalid includes directive: %{klass}.includes(%{args})"
           summary: "Eager loading in Mongoid only supports providing arguments
             to %{klass}.includes that are the names of relations on the %{klass}
@@ -10,10 +10,10 @@ en:
           resolution: "Ensure that each parameter passed to %{klass}.includes is
             a valid name of a relation on the %{klass} model. These are: %{relations}."
 
-        invalid_polymorphic_nested_include:
-          message: "Invalid nested include directive: %{klass}.include_nested(%{args}, from: %{from}), %{from}
+        invalid_polymorphic_nested_includes:
+          message: "Invalid nested include directive: %{klass}.includes(%{args}, from: %{from}), %{from}
             is a polymorphic relation."
           summary: "Given that %{from} is a polymorphic relation, you must specify
             :from_class when calling the method to resolve the ambiguity."
-          resolution: "Ensure that the first parameter passed to %{klass}.include_nested is
+          resolution: "Ensure that the first parameter passed to %{klass}.includes is
             a non-polymorphic relation in the %{klass} model, or a explicit class in :from_class"

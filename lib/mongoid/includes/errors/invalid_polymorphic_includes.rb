@@ -2,16 +2,13 @@ module Mongoid
   module Includes
     module Errors
 
-      # This error is raised when an invalid nested inclusion is performed through
-      # a polymorphic relation.
+      # Public: This error is raised when an invalid nested inclusion is
+      # attempted through a polymorphic relation.
       class InvalidPolymorphicIncludes < InvalidIncludes
 
-        def initialize(klass, relations, options)
-          super(klass, relations, options)
-        end
-
+        # Internal: Key of the translation message
         def type
-          :invalid_polymorphic_nested_include
+          :invalid_polymorphic_nested_includes
         end
       end
     end

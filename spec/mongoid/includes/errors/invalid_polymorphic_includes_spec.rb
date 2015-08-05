@@ -1,28 +1,28 @@
 require 'spec_helper'
 
-describe Mongoid::Includes::Errors::InvalidIncludes do
+describe Mongoid::Includes::Errors::InvalidPolymorphicIncludes do
 
   describe "#message" do
 
     Given(:error) {
-      described_class.new(Album, :something, {})
+      described_class.new(Album, :something, from: :artist)
     }
 
     it "contains the problem in the message" do
       expect(error.message).to include(
-        "Invalid includes directive: Album.includes(:something)"
+        ":artist is a polymorphic relation"
       )
     end
 
     it "contains the summary in the message" do
       expect(error.message).to include(
-        "that are the names of relations on the Album model"
+        "specify :from_class when calling the method to resolve the ambiguity"
       )
     end
 
     it "contains the resolution in the message" do
       expect(error.message).to include(
-        "is a valid name of a relation on the Album model"
+        "non-polymorphic relation in the Album model, or a explicit class in :from_class"
       )
     end
   end
