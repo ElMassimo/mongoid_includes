@@ -1,6 +1,7 @@
 ## Mongoid::Includes 1.0.2 (2015-10-08) ##
 
 *   Fix error when using `merge` or `merge!` with a criteria and `includes`.
+*   Replace the internal structure with a Set to be more robust when avoiding duplicate relations.
 
 ## Mongoid::Includes 1.0.1 (August 5, 2015) ##
 
