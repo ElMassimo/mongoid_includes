@@ -6,9 +6,9 @@ module Mongoid
     # Public: Collection of relations that need to be eager loaded.
     class Inclusions < SimpleDelegator
 
-      # Internal: By default, it wraps an empty array.
+      # Internal: By default, it wraps an empty set.
       def initialize(object = [])
-        super
+        super Set.new(object)
       end
 
       # Public: Adds a new relation as an inclusion.
@@ -16,7 +16,7 @@ module Mongoid
       # Returns the added inclusion.
       def push(metadata, options = {})
         metadata = Inclusion.new(metadata, options) unless metadata.is_a?(Inclusion)
-        super(metadata)
+        add(metadata)
         metadata
       end
 
@@ -24,6 +24,16 @@ module Mongoid
       # specified metadata.
       def include?(metadata)
         find { |inclusion| inclusion.metadata == metadata }
+      end
+
+      # Public: Returns the sum of the inclusions without any duplicates.
+      def +(inclusions)
+        Inclusions.new(union(inclusions))
+      end
+
+      # Public: Returns a new Inclusions without any duplicates.
+      def uniq
+        dup
       end
     end
   end

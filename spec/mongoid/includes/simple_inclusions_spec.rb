@@ -228,7 +228,8 @@ describe Mongoid::Includes::Criteria do
       end
 
       it 'does not duplicate the metadata in the inclusions' do
-        expect(criteria.inclusions).to eq([ metadata ])
+        expect(criteria.inclusions.size).to eq 1
+        expect(criteria.inclusions.first).to eq metadata
       end
     end
 

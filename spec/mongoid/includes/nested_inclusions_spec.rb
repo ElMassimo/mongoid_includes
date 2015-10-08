@@ -44,9 +44,9 @@ describe Mongoid::Includes::Criteria do
       And  { expect(inclusions).to include(metadata) }
       And  { expect(inclusions).to include(nested_metadata) }
       And  { expect(inclusions).to include(polymorphic_metadata) }
-      And  { !inclusions[0].nested? && !inclusions[0].polymorphic_belongs_to? }
-      And  { inclusions[1].nested? && !inclusions[1].polymorphic_belongs_to? }
-      And  { inclusions[2].nested? && inclusions[2].polymorphic_belongs_to? }
+      And  { !inclusions.to_a[0].nested? && !inclusions.to_a[0].polymorphic_belongs_to? }
+      And  { inclusions.to_a[1].nested? && !inclusions.to_a[1].polymorphic_belongs_to? }
+      And  { inclusions.to_a[2].nested? && inclusions.to_a[2].polymorphic_belongs_to? }
     end
   end
 end
