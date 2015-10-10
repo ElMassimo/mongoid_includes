@@ -1,3 +1,7 @@
+## Mongoid::Includes 1.0.3 (2015-10-10) ##
+
+*   Add support for Mongoid 5.
+
 ## Mongoid::Includes 1.0.2 (2015-10-08) ##
 
 *   Fix error when using `merge` or `merge!` with a criteria and `includes`.

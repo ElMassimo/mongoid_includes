@@ -1,27 +1,26 @@
 PATH
   remote: .
   specs:
-    mongoid_includes (1.0.2)
-      mongoid (>= 3.1.0, < 5.0.0)
+    mongoid_includes (1.0.3)
+      mongoid (>= 3.1.0, < 6.0.0)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    activemodel (4.2.3)
-      activesupport (= 4.2.3)
+    activemodel (4.2.4)
+      activesupport (= 4.2.4)
       builder (~> 3.1)
-    activesupport (4.2.3)
+    activesupport (4.2.4)
       i18n (~> 0.7)
       json (~> 1.7, >= 1.7.7)
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    bson (3.2.1)
+    bson (3.2.6)
     builder (3.2.2)
     codeclimate-test-reporter (0.4.7)
       simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.0)
-    connection_pool (2.2.0)
     diff-lcs (1.2.5)
     docile (1.1.5)
     given_core (3.7.1)
@@ -29,17 +28,14 @@ GEM
     i18n (0.7.0)
     json (1.8.3)
     method_source (0.8.2)
-    minitest (5.8.0)
-    mongoid (4.0.2)
+    minitest (5.8.1)
+    mongo (2.1.1)
+      bson (~> 3.0)
+    mongoid (5.0.0)
       activemodel (~> 4.0)
-      moped (~> 2.0.0)
+      mongo (~> 2.1)
       origin (~> 2.1)
       tzinfo (>= 0.3.37)
-    moped (2.0.6)
-      bson (~> 3.0)
-      connection_pool (~> 2.0)
-      optionable (~> 0.2.0)
-    optionable (0.2.0)
     origin (2.1.1)
     pry (0.10.1)
       coderay (~> 1.1.0)
@@ -84,6 +80,7 @@ PLATFORMS
 DEPENDENCIES
   bundler
   codeclimate-test-reporter
+  mongoid (~> 5.0.0)
   mongoid_includes!
   pry
   rake

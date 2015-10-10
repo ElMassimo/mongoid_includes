@@ -27,6 +27,15 @@ DATABASE = ENV['MONGOID_DATABASE'] ||= 'mongoid_test'
 # Set the database that the spec suite connects to.
 Mongoid.configure do |config|
   config.load_configuration(
+    clients: {
+      default: {
+        database: DATABASE,
+        hosts: [ "#{HOST}:#{PORT.to_i}" ],
+        options: {
+          max_pool_size: 1,
+        }
+      }
+    },
     sessions: {
       default: {
         database: DATABASE,
