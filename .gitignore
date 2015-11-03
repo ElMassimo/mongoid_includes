@@ -1,5 +1,6 @@
 *.gem
 .yardoc
+spec/mongo.log
 
 coverage.data/
 coverage/
