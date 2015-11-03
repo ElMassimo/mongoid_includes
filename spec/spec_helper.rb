@@ -45,6 +45,10 @@ Mongoid.configure do |config|
   )
 end
 
+if defined?(Mongo)
+  Mongo::Logger.logger = Logger.new("./spec/mongo.log")
+end
+
 RSpec.configure do |config|
   config.include Mongoid::SpecHelpers
   config.raise_errors_for_deprecations!
