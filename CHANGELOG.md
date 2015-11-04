@@ -1,3 +1,7 @@
+## Mongoid::Includes 1.1.0 (2015-11-04) ##
+
+*   Fix bug with optional polymorphic `belongs_to` relations where the name of the relation does not match an actual class name.
+
 ## Mongoid::Includes 1.0.3 (2015-10-10) ##
 
 *   Add support for Mongoid 5.

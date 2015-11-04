@@ -32,7 +32,7 @@ module Mongoid
       def preload_polymorphic(inclusion, docs)
         docs.group_by do |doc|
           doc.send(inclusion.inverse_type) # The {name}_type attribute in polymorphic relations.
-        end.each do |type, docs|
+        end.select { |type, _| type }.each do |type, docs|
           concrete_inclusion = inclusion.for_class_name(type)
           preload([concrete_inclusion], docs)
         end
