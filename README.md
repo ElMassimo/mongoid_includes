@@ -19,7 +19,7 @@ Band.includes(:albums, with: ->(albums) { albums.gt(release: 1970) })
 # The library supports nested eager loading using :from for terseness,
 # but you can manually include nested associations using the :with option.
 released_only = ->(albums) { albums.where(released: true) }
-Musician.includes(:band, with: ->(bands) { bands.includes(:albums, with: released_only) })
+Musician.includes(:band, with: ->(bands) { bands.limit(2).includes(:albums, with: released_only) })
 ```
 
 ## Advantages
