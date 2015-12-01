@@ -7,7 +7,7 @@ Mongoid::Includes
 [![Inline docs](http://inch-ci.org/github/ElMassimo/mongoid_includes.svg)](http://inch-ci.org/github/ElMassimo/mongoid_includes)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/ElMassimo/mongoid_includes/blob/master/LICENSE.txt)
 
-`Mongoid::Includes` improves eager loading in Mongoid, supporting polymorphic associations, and up to two-levels of eager loading.
+`Mongoid::Includes` improves eager loading in Mongoid, supporting polymorphic associations, and nested eager loading.
 
 ### Usage
 
@@ -15,6 +15,11 @@ Mongoid::Includes
 Album.includes(:songs).includes(:musicians, from: :band)
 
 Band.includes(:albums, with: ->(albums) { albums.gt(release: 1970) })
+
+# The library supports nested eager loading using :from for terseness,
+# but you can manually include nested associations using the :with option.
+released_only = ->(albums) { albums.where(released: true) }
+Musician.includes(:band, with: ->(bands) { bands.includes(:albums, with: released_only) })
 ```
 
 ## Advantages
