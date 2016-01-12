@@ -1,3 +1,7 @@
+## Mongoid::Includes 1.1.1 (2016-01-12) ##
+
+*   Fix bug with nested includes when the related document is `nil`.
+
 ## Mongoid::Includes 1.1.0 (2015-11-04) ##
 
 *   Fix bug with optional polymorphic `belongs_to` relations where the name of the relation does not match an actual class name.

@@ -42,7 +42,7 @@ module Mongoid
       # includes by that property are processed as usual.
       def preload_nested(nested_inclusions, docs)
         nested_inclusions.group_by(&:from).each do |from, inclusions|
-          preload(inclusions, docs.map(&from).flatten)
+          preload(inclusions, docs.flat_map(&from).compact)
         end
       end
     end
