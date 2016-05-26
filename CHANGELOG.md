@@ -1,3 +1,7 @@
+## Mongoid::Includes 1.1.2 (2016-05-26) ##
+
+*   Change gem dependencies to [support Mongoid 6](https://github.com/ElMassimo/mongoid_includes/pull/3). Thanks @joostverdoorn!
+
 ## Mongoid::Includes 1.1.1 (2016-01-12) ##
 
 *   Fix bug with nested includes when the related document is `nil`.

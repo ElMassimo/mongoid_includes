@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    mongoid_includes (1.1.1)
-      mongoid (>= 4.0.0, < 6.0.0)
+    mongoid_includes (1.1.2)
+      mongoid (>= 4.0.0, < 7.0.0)
 
 GEM
   remote: https://rubygems.org/
@@ -89,4 +89,4 @@ DEPENDENCIES
   yard-tomdoc
 
 BUNDLED WITH
-   1.11.2
+   1.12.3
