@@ -6,7 +6,12 @@ class Game
   field :name
 
   belongs_to :person, index: true, validate: true
-  belongs_to :parent, class_name: "Game", foreign_key: "parent-id"
+
+  if Mongoid::VERSION >= "6.0.0"
+    belongs_to :parent, class_name: "Game", foreign_key: "parent-id", optional: true
+  else
+    belongs_to :parent, class_name: "Game", foreign_key: "parent-id"
+  end
 
   accepts_nested_attributes_for :person
 
