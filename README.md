@@ -24,7 +24,7 @@ Musician.includes(:band, with: ->(bands) { bands.limit(2).includes(:albums, with
 
 ## Advantages
 
-* Avoid N+1 queries and get better performance.
+* [Avoid N+1 queries](http://maximomussini.com/posts/mongoid-n+1/) and get better performance.
 * No boilerplate code is required.
 * Can avoid loading all the related documents if necessary.
 
