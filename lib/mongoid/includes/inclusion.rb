@@ -17,6 +17,12 @@ module Mongoid
         !!from
       end
 
+      # Public: Checks if the collection already has an inclusion with the
+      # specified metadata.
+      def eql?(other)
+        metadata == other && other.respond_to?(:from) && from == other.from
+      end
+
       # Public: Returns true if the relation is a polymorphic belongs_to.
       def polymorphic_belongs_to?
         metadata.polymorphic? && metadata.relation == Mongoid::Relations::Referenced::In
