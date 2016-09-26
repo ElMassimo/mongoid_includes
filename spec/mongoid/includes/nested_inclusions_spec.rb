@@ -48,5 +48,19 @@ describe Mongoid::Includes::Criteria do
       And  { inclusions.to_a[1].nested? && !inclusions.to_a[1].polymorphic_belongs_to? }
       And  { inclusions.to_a[2].nested? && inclusions.to_a[2].polymorphic_belongs_to? }
     end
+
+    context 'works with self-referencing relations' do
+      Given(:metadata) { Node.relations['children'] }
+
+      When(:criteria) {
+        Node.includes(:children, from: :children)
+      }
+
+      Then { inclusions.size == 2 }
+      And  { expect(inclusions.to_a[0].metadata).to eq(metadata) }
+      And  { expect(inclusions.to_a[0].from).to be_nil }
+      And  { expect(inclusions.to_a[1].metadata).to eq(metadata) }
+      And  { expect(inclusions.to_a[1].from).to eq(:children) }
+    end
   end
 end
