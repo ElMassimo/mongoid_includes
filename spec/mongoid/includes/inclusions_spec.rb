@@ -19,5 +19,12 @@ describe Mongoid::Includes::Inclusions do
       Then { result.size == 3 }
       And  { result.class == Mongoid::Includes::Inclusions }
     end
+
+    context 'prevents duplicates' do
+      Given {
+        inclusions.add(Band.relations['albums'])
+      }
+      Then { inclusions.size == 3 }
+    end
   end
 end
