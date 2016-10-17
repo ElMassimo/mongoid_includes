@@ -1,3 +1,7 @@
+## Mongoid::Includes 1.1.3 (2016-10-17) ##
+
+*   Fix eager loading for [self-referencing associations](https://github.com/ElMassimo/mongoid_includes/pull/6). Thanks @rmachielse!
+
 ## Mongoid::Includes 1.1.2 (2016-05-26) ##
 
 *   Change gem dependencies to [support Mongoid 6](https://github.com/ElMassimo/mongoid_includes/pull/3). Thanks @joostverdoorn!
