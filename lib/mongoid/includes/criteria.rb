@@ -60,7 +60,7 @@ module Mongoid
         unless metadata = owner_class.reflect_on_association(relation)
           raise Mongoid::Includes::Errors::InvalidIncludes.new(owner_class, relation, options)
         end
-        inclusions.include?(metadata) || inclusions.push(metadata, options)
+        inclusions.push(metadata, options)
       end
     end
   end

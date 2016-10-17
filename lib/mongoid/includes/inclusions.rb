@@ -20,12 +20,6 @@ module Mongoid
         metadata
       end
 
-      # Public: Checks if the collection already has an inclusion with the
-      # specified metadata.
-      def include?(metadata)
-        find { |inclusion| inclusion.metadata == metadata }
-      end
-
       # Public: Returns the sum of the inclusions without any duplicates.
       def +(inclusions)
         Inclusions.new(union(inclusions))
