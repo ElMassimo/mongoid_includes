@@ -3,13 +3,10 @@ language: ruby
 bundler_args: --without development
 
 rvm:
-  - 2.0.0
-  - 2.1.1
-  - 2.2.2
+  - 2.3.3
 
 gemfile:
   - Gemfile
-  - gemfiles/mongoid4.gemfile
   - gemfiles/mongoid6.gemfile
 
 env:
@@ -17,15 +14,7 @@ env:
     - CI="travis"
     - JRUBY_OPTS="--server -J-Xms512m -J-Xmx1024m"
   matrix:
-    - MONGODB=2.4.14
     - MONGODB=2.6.10
-
-matrix:
-  exclude:
-    - rvm: 2.0.0
-      gemfile: gemfiles/mongoid6.gemfile
-    - rvm: 2.1.1
-      gemfile: gemfiles/mongoid6.gemfile
 
 before_script:
   - wget http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-${MONGODB}.tgz -O /tmp/mongodb.tgz
