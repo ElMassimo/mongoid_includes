@@ -1,3 +1,7 @@
+## Mongoid::Includes 2.0.0 (2017-01-10) ##
+
+*   Support Mongoid 6.0.1, fixes related to [changes in Mongoid internals](https://github.com/mongodb/mongoid/pull/4326). Thanks @mityakoval and @forumd for the bug reports!
+
 ## Mongoid::Includes 1.1.3 (2016-10-17) ##
 
 *   Fix eager loading for [self-referencing associations](https://github.com/ElMassimo/mongoid_includes/pull/6). Thanks @rmachielse!
