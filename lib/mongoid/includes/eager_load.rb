@@ -6,13 +6,13 @@ module Mongoid
 
       # Override: Partitions the inclusions into the different types.
       def eager_load(docs)
-        return false unless eager_loadable?
+        if eager_loadable?
+          nested_inclusions, inclusions = criteria.inclusions.partition(&:nested?)
+          polymorphic_inclusions, inclusions = inclusions.partition(&:polymorphic_belongs_to?)
+          full_preload(docs, inclusions, polymorphic_inclusions, nested_inclusions)
+        end
 
-        nested_inclusions, inclusions = criteria.inclusions.partition(&:nested?)
-        polymorphic_inclusions, inclusions = inclusions.partition(&:polymorphic_belongs_to?)
-        full_preload(docs, inclusions, polymorphic_inclusions, nested_inclusions)
-
-        self.eager_loaded = true
+        docs
       end
 
       # Internal: Performs the normal inclusions first, which allows to perform
