@@ -22,11 +22,17 @@ released_only = ->(albums) { albums.where(released: true) }
 Musician.includes(:band, with: ->(bands) { bands.limit(2).includes(:albums, with: released_only) })
 ```
 
+### Pro Tip
+Since you can modify the queries for the associations, you can use `only` and make your queries even faster:
+```ruby
+Band.includes :musicians, with: ->(musicians) { musicians.only(:id, :name) }
+```
+
 ## Advantages
 
 * [Avoid N+1 queries](http://maximomussini.com/posts/mongoid-n+1/) and get better performance.
 * No boilerplate code is required.
-* Can avoid loading all the related documents if necessary.
+* Modify the queries for related documents at will.
 
 
 License
