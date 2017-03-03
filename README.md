@@ -8,6 +8,16 @@ Mongoid::Includes
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/ElMassimo/mongoid_includes/blob/master/LICENSE.txt)
 
 `Mongoid::Includes` improves eager loading in Mongoid, supporting polymorphic associations, and nested eager loading.
+### Installation
+
+Add this line to your application's Gemfile:
+```
+gem 'mongoid_includes'
+```
+Then run:
+```
+bundle install
+```
 
 ### Usage
 
