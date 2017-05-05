@@ -5,6 +5,6 @@ module Mongoid
   module Includes
 
     # Public: This library will attempt to follow semantic versioning (whatever that's supposed to be).
-    VERSION = '2.0.0'
+    VERSION = '1.2.0'
   end
 end
