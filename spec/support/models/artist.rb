@@ -5,4 +5,6 @@ class Artist
 
   has_many :albums
   has_one :musician
+
+  belongs_to :associated_act, polymorphic: true
 end

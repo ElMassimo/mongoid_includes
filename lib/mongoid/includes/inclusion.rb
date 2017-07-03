@@ -43,7 +43,7 @@ module Mongoid
         @modifier ||= @options[:with]
       end
 
-      # Public: Preloads the documents for the relation. Users a custom block
+      # Public: Preloads the documents for the relation. Uses a custom block
       # if one was provided, or fetches them using the class and the foreign key.
       def load_documents_for(foreign_key, foreign_key_values)
         if loader
@@ -63,7 +63,7 @@ module Mongoid
           self[:class_name] = @class_name = class_name
           self[:polymorphic], self[:as], @polymorphic, @klass = nil
           self
-        }
+        }, with: @modifier, loader: @loader
       end
     end
   end

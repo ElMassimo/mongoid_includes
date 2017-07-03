@@ -1,10 +1,10 @@
+## Mongoid::Includes 1.3.0 (2017-07-03) ##
+
+*   Fix bug where `includes` ignores the `:with` option if the association is polymorphic. Thanks @nickcherry for the bug report!
+
 ## Mongoid::Includes 1.2.0 (2017-05-05) ##
 
 *   Fixes related to [changes in Mongoid internals](https://github.com/mongodb/mongoid/pull/4326), which have been also applied to Mongoid 5.2
-
-## Mongoid::Includes 2.0.0 (2017-01-10) ##
-
-*   Support Mongoid 6.0.1, fixes related to [changes in Mongoid internals](https://github.com/mongodb/mongoid/pull/4326). Thanks @mityakoval and @forumd for the bug reports!
 
 ## Mongoid::Includes 1.1.3 (2016-10-17) ##
 
