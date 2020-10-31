@@ -3,7 +3,7 @@ language: ruby
 bundler_args: --without development
 
 rvm:
-  - 2.3.3
+  - 2.7.1
 
 gemfile:
   - Gemfile
@@ -14,7 +14,7 @@ env:
     - CI="travis"
     - JRUBY_OPTS="--server -J-Xms512m -J-Xmx1024m"
   matrix:
-    - MONGODB=2.6.10
+    - MONGODB=4.0.3
 
 before_script:
   - wget http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-${MONGODB}.tgz -O /tmp/mongodb.tgz
