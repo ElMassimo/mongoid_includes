@@ -4,15 +4,10 @@ gemspec path: '..'
 
 gem 'bundler'
 gem 'rake'
-gem 'pry'
+gem 'pry-byebug'
 gem 'mongoid', '~> 7.0.0'
 
 group :test do
   gem 'rspec-given', '~> 3.5'
-  gem 'codeclimate-test-reporter', require: nil
-end
-
-group :doc do
-  gem 'yard'
-  gem 'yard-tomdoc'
+  gem 'simplecov', '~> 0.17.0', require: false
 end
