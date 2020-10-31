@@ -47,26 +47,11 @@ class Person
 
   attr_reader :rescored
 
-  embeds_many :addresses, as: :addressable, validate: false do
-    def extension
-      "Testing"
-    end
-    def find_by_street(street)
-      where(street: street).first
-    end
-  end
+  embeds_many :addresses, as: :addressable, validate: false
 
-  has_one :game, dependent: :destroy, validate: false do
-    def extension
-      "Testing"
-    end
-  end
+  has_one :game, dependent: :destroy, validate: false
 
-  has_many :posts, dependent: :delete, validate: false do
-    def extension
-      "Testing"
-    end
-  end
+  has_many :posts, dependent: :delete_all, validate: false
 
   has_and_belongs_to_many :preferences, index: true, dependent: :nullify, validate: false
 end

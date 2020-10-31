@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 
-gemspec
+gemspec path: '..'
 
 gem 'bundler'
 gem 'rake'
 gem 'pry-byebug'
-gem 'mongoid', '~> 7.1.0'
+gem 'mongoid', '~> 7.0.0'
 
 group :test do
   gem 'rspec-given', '~> 3.5'

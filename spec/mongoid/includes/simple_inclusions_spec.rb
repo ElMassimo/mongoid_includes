@@ -327,7 +327,7 @@ describe Mongoid::Includes::Criteria do
         end
 
         let!(:depeche) do
-          Band.create!(name: 'Depeche Mode')
+          Band.create!(name: 'Depeche Mode', records: [Record.new(name: 'Music for the Masses')])
         end
 
         let!(:tool) do
@@ -345,10 +345,6 @@ describe Mongoid::Includes::Criteria do
 
           let(:criteria) do
             peep.reload.addresses.includes(:band)
-          end
-
-          let(:context) do
-            criteria.context
           end
 
           let!(:document) do
@@ -372,10 +368,6 @@ describe Mongoid::Includes::Criteria do
             peep.reload.addresses.includes(:band)
           end
 
-          let(:context) do
-            criteria.context
-          end
-
           let!(:document) do
             criteria.last
           end
@@ -395,10 +387,6 @@ describe Mongoid::Includes::Criteria do
 
           let(:criteria) do
             peep.reload.addresses.includes(:band)
-          end
-
-          let(:context) do
-            criteria.context
           end
 
           let!(:documents) do

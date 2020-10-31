@@ -1,3 +1,8 @@
+## Mongoid::Includes 3.0.0 (2020-10-29) ##
+
+*  Add support for Mongoid `7.1`.
+*  Avoid making a query when the foreign keys are empty.
+
 ## Mongoid::Includes 2.1.0 (2017-07-03) ##
 
 *   Fix bug where `includes` ignores the `:with` option if the association is polymorphic. Thanks @nickcherry for the bug report!

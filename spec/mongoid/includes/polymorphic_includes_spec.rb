@@ -6,7 +6,7 @@ describe Mongoid::Includes::Criteria do
     Given(:inclusions) { criteria.inclusions }
 
     context 'multiple inclusions through polymorphic associations' do
-      Given(:pink_floyd) { Band.create!(name: 'Pink Floyd') }
+      Given(:pink_floyd) { Band.create!(name: 'Pink Floyd', musician_ids: [nil, '']) }
       Given(:jethro) { Band.create!(name: 'Jethro Tull') }
       Given {
         Artist.create!(name: 'David Gilmour', associated_act: pink_floyd)
@@ -31,7 +31,7 @@ describe Mongoid::Includes::Criteria do
       }
 
       describe ':with inclusions should not be overriden' do
-        When(:artists) { expect_query(5) { criteria.entries } }
+        When(:artists) { expect_query(4) { criteria.entries } } # There are no musicians, so no query should be made.
         Given(:albums) { artists.map(&:associated_act).flat_map(&:albums) }
         Then { artists.size == 2 }
         And {
@@ -48,6 +48,12 @@ describe Mongoid::Includes::Criteria do
         Then { inclusions.size == 2 }
         And  { inclusions.first.nested? }
         And  { inclusions.last.polymorphic? && inclusions.last.modifier }
+      end
+
+      it 'should fail if a polymorphic association is not disambiguated' do
+        expect {
+          criteria.includes(:musicians, from: :associated_act)
+        }.to raise_error(Mongoid::Includes::Errors::InvalidPolymorphicIncludes)
       end
     end
   end

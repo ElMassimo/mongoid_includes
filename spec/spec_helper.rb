@@ -1,7 +1,5 @@
-if ENV['CODECLIMATE_REPO_TOKEN']
-  require 'codeclimate-test-reporter'
-  CodeClimate::TestReporter.start
-end
+require 'simplecov'
+SimpleCov.start
 
 require 'rspec/given'
 require 'pry'
@@ -45,8 +43,11 @@ Mongoid.configure do |config|
   )
 end
 
-if defined?(Mongo)
-  Mongo::Logger.logger = Logger.new("./spec/mongo.log")
+# Logging to the console is useful for debugging queries.
+Mongo::Logger.logger = Logger.new('./spec/mongo.log')
+
+def log_mongo_to_console
+  Mongo::Logger.logger = Logger.new($stdout)
 end
 
 RSpec.configure do |config|

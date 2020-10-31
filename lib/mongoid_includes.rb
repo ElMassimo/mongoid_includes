@@ -9,4 +9,4 @@ Mongoid::Contextual::Mongo.send :prepend, Mongoid::Includes::EagerLoad
 Mongoid::Contextual::Memory.send :prepend, Mongoid::Includes::EagerLoad
 
 Mongoid::Criteria.send :prepend, Mongoid::Includes::Criteria
-Mongoid::Relations::Eager::Base.send :prepend, Mongoid::Includes::Relations::Eager
+Mongoid::Association::Referenced::Eager::Base.send :prepend, Mongoid::Includes::Association::Eager

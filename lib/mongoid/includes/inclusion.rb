@@ -25,17 +25,12 @@ module Mongoid
 
       # Public: Returns true if the relation is a polymorphic belongs_to.
       def polymorphic_belongs_to?
-        metadata.polymorphic? && metadata.relation == Mongoid::Relations::Referenced::In
+        metadata.polymorphic? && metadata.relation == Mongoid::Association::Referenced::BelongsTo::Proxy
       end
 
       # Public: Name of the relation from which a nested inclusion is performed.
       def from
         @from ||= @options[:from]
-      end
-
-      # Internal: Proc that will return the included documents from a set of foreign keys.
-      def loader
-        @loader ||= @options[:loader]
       end
 
       # Internal: Proc that will modify the documents to include in the relation.
@@ -46,12 +41,11 @@ module Mongoid
       # Public: Preloads the documents for the relation. Uses a custom block
       # if one was provided, or fetches them using the class and the foreign key.
       def load_documents_for(foreign_key, foreign_key_values)
-        if loader
-          loader.call(foreign_key, foreign_key_values)
-        else
-          docs = klass.any_in(foreign_key => foreign_key_values)
-          modifier ? modifier.call(docs) : docs
-        end
+        # NOTE: We assume the upstream code in Mongoid is removing nil keys.
+        return klass.none if foreign_key_values.empty?
+
+        docs = klass.any_in(foreign_key => foreign_key_values)
+        modifier ? modifier.call(docs) : docs
       end
 
       # Public: Clones the inclusion and changes the Mongoid::Metadata::Relation
@@ -60,10 +54,10 @@ module Mongoid
       # Returns an Inclusion that can be eager loaded as usual.
       def for_class_name(class_name)
         Inclusion.new metadata.clone.instance_eval { |relation_metadata|
-          self[:class_name] = @class_name = class_name
-          self[:polymorphic], self[:as], @polymorphic, @klass = nil
+          @options[:class_name] = @class_name = class_name
+          @options[:polymorphic], @options[:as], @polymorphic, @klass = nil
           self
-        }, with: @modifier, loader: @loader
+        }, with: @modifier
       end
     end
   end

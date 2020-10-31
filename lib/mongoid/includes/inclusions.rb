@@ -11,15 +11,20 @@ module Mongoid
         super Set.new(object)
       end
 
+      # Override: Avoid replacing existing inclusions.
+      def add(metadata)
+        include?(metadata) ? metadata : super
+      end
+
       # Public: Adds a new relation as an inclusion.
       #
       # Returns the added inclusion.
       def push(metadata, options = {})
         metadata = Inclusion.new(metadata, options) unless metadata.is_a?(Inclusion)
 
-        # Ensure that an inclusion with a specified loader or modifier replaces
-        # a previously specified loader.
-        delete(metadata) if metadata.loader || metadata.modifier
+        # Ensure that an inclusion with a specified modifier replaces a
+        # previously specified one.
+        delete(metadata) if metadata.modifier
 
         # Internally it's a set so it won't add it twice.
         add(metadata)

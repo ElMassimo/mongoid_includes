@@ -20,11 +20,9 @@ describe Mongoid::Includes::Inclusions do
       And  { result.class == Mongoid::Includes::Inclusions }
     end
 
-    context 'prevents duplicates' do
-      Given {
-        inclusions.add(Band.relations['albums'])
-      }
-      Then { inclusions.size == 3 }
+    it 'prevents duplicates' do
+      new_criteria = criteria.includes(:albums)
+      expect(new_criteria.inclusions.size).to eq 3
     end
   end
 end
