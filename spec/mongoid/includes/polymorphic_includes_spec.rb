@@ -49,6 +49,12 @@ describe Mongoid::Includes::Criteria do
         And  { inclusions.first.nested? }
         And  { inclusions.last.polymorphic? && inclusions.last.modifier }
       end
+
+      it 'should fail if a polymorphic association is not disambiguated' do
+        expect {
+          criteria.includes(:musicians, from: :associated_act)
+        }.to raise_error(Mongoid::Includes::Errors::InvalidPolymorphicIncludes)
+      end
     end
   end
 end

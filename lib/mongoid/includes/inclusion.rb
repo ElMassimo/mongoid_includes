@@ -33,11 +33,6 @@ module Mongoid
         @from ||= @options[:from]
       end
 
-      # Internal: Proc that will return the included documents from a set of foreign keys.
-      def loader
-        @loader ||= @options[:loader]
-      end
-
       # Internal: Proc that will modify the documents to include in the relation.
       def modifier
         @modifier ||= @options[:with]
@@ -49,12 +44,8 @@ module Mongoid
         # NOTE: We assume the upstream code in Mongoid is removing nil keys.
         return klass.none if foreign_key_values.empty?
 
-        if loader
-          loader.call(foreign_key, foreign_key_values)
-        else
-          docs = klass.any_in(foreign_key => foreign_key_values)
-          modifier ? modifier.call(docs) : docs
-        end
+        docs = klass.any_in(foreign_key => foreign_key_values)
+        modifier ? modifier.call(docs) : docs
       end
 
       # Public: Clones the inclusion and changes the Mongoid::Metadata::Relation
@@ -66,7 +57,7 @@ module Mongoid
           @options[:class_name] = @class_name = class_name
           @options[:polymorphic], @options[:as], @polymorphic, @klass = nil
           self
-        }, with: @modifier, loader: @loader
+        }, with: @modifier
       end
     end
   end

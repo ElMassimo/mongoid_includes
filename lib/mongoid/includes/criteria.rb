@@ -19,7 +19,7 @@ module Mongoid
       #               loaded from.
       # from_class: - Necessary to solve ambiguity when doing two-level eager
       #               load through a polymorphic relation.
-      # loader:       - An optional block that specifies how to load all the
+      # with:       - An optional block that specifies how to load all the
       #               related documents.
       #
       # Notes:
