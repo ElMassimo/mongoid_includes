@@ -62,7 +62,7 @@ class Person
     end
   end
 
-  has_many :posts, dependent: :delete, validate: false do
+  has_many :posts, dependent: :delete_all, validate: false do
     def extension
       "Testing"
     end

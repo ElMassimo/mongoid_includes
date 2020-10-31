@@ -11,6 +11,11 @@ module Mongoid
         super Set.new(object)
       end
 
+      # Override: Avoid replacing existing inclusions.
+      def add(metadata)
+        include?(metadata) ? metadata : super
+      end
+
       # Public: Adds a new relation as an inclusion.
       #
       # Returns the added inclusion.
