@@ -63,7 +63,7 @@ GEM
     simplecov-html (0.10.2)
     sorcerer (2.0.1)
     thread_safe (0.3.6)
-    tzinfo (1.2.7)
+    tzinfo (1.2.10)
       thread_safe (~> 0.1)
     zeitwerk (2.4.1)
 
