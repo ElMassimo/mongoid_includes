@@ -1,3 +1,7 @@
+## Mongoid::Includes 3.0.2 (2022-11-03) ##
+
+*  [perf: avoid queries when foreign keys are empty](https://github.com/ElMassimo/mongoid_includes/commit/9f4c0c8bf1560a319c663fae77015c638caec56b)
+
 ## Mongoid::Includes 3.0.1 (2022-11-03) ##
 
 *  Allow installing this library with Mongoid `8.0`.
