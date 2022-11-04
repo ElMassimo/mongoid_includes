@@ -5,7 +5,7 @@ Mongoid::Includes
 [![Test Coverage](https://codeclimate.com/github/ElMassimo/mongoid_includes/badges/coverage.svg)](https://codeclimate.com/github/ElMassimo/mongoid_includes)
 [![Code Climate](https://codeclimate.com/github/ElMassimo/mongoid_includes.svg)](https://codeclimate.com/github/ElMassimo/mongoid_includes)
 [![Inline docs](http://inch-ci.org/github/ElMassimo/mongoid_includes.svg)](http://inch-ci.org/github/ElMassimo/mongoid_includes)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/ElMassimo/mongoid_includes/blob/master/LICENSE.txt)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/ElMassimo/mongoid_includes/blob/main/LICENSE.txt)
 
 `Mongoid::Includes` improves eager loading in Mongoid, supporting polymorphic associations, and nested eager loading.
 
