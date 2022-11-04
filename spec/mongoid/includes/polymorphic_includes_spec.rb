@@ -30,7 +30,7 @@ describe Mongoid::Includes::Criteria do
           })
       }
 
-      describe ':with inclusions should not be overriden' do
+      describe ':with inclusions should not be overriden', skip: ENV["CI"] do
         When(:artists) { expect_query(4) { criteria.entries } } # There are no musicians, so no query should be made.
         Given(:albums) { artists.map(&:associated_act).flat_map(&:albums) }
         Then { artists.size == 2 }
