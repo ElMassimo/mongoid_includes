@@ -10,11 +10,6 @@ Dir['./spec/support/**/*.rb'].map do |f|
   require f
 end
 
-def mongodb_version
-  session = Mongoid::Sessions.default
-  session.command(buildinfo: 1)[version]
-end
-
 I18n.config.enforce_available_locales = false
 
 # These are used when creating any connection in the test suite.
