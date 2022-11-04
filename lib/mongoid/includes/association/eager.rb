@@ -9,7 +9,11 @@ module Mongoid
         # Internal: Performs eager load and iterates over the preloaded documents
         # for the current relation.
         def each_loaded_document
-          @association.load_documents_for(key, keys_from_docs).each do |doc|
+          foreign_key_values = keys_from_docs
+
+          return @association.klass.none if foreign_key_values.empty?
+
+          @association.load_documents_for(key, foreign_key_values).each do |doc|
             yield doc
           end
         end
