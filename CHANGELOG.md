@@ -1,3 +1,7 @@
+## Mongoid::Includes 3.0.1 (2022-11-03) ##
+
+*  Allow installing this library with Mongoid `8.0`.
+
 ## Mongoid::Includes 3.0.0 (2020-10-29) ##
 
 *  Add support for Mongoid `7.1`.
